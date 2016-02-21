@@ -1,0 +1,6 @@
+import json
+
+def init():
+	global data15
+	with open('gg2015.json') as data:
+		data15 = json.load(data)
