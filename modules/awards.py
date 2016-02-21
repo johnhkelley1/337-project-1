@@ -1,6 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
 import settings
+import nltk
+from nltk.tokenize.treebank import TreebankWordTokenizer
+
+word_tokenize = nltk.tokenize.TreebankWordTokenizer().tokenize
+
 def get():
 	r = requests.get('https://en.wikipedia.org/wiki/Golden_Globe_Award')
 	soup = BeautifulSoup(r.text, 'html.parser')
@@ -10,3 +15,18 @@ def get():
 			if a.text.partition(' ')[0] == 'Best' or a.text.partition(' ')[0] == 'Cecil':
 				names.append(a.parent.text)
 	return names
+
+def awards_from_text(text):
+	awards = []
+	for key in settings.awards:
+		words = word_tokenize(text)
+		stripkey = word_tokenize(key)
+		stripkey = [w for w in stripkey if w not in settings.award_stopwords]
+		words = [w.lower() for w in words]
+		isaward = True
+		for w in stripkey:
+			if(w not in words):
+				isaward = False
+		if isaward:
+			awards.append(key)
+	return awards
