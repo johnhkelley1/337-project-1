@@ -21,7 +21,7 @@ def names_from_text(text):
 	word_tokenize = nltk.tokenize.TreebankWordTokenizer().tokenize
 	words = word_tokenize(text)
 
-	stopwords = ['october','november','december','january','in','golden','globe','award','the','a','with']
+	stopwords = ['if','october','november','december','january','in','golden','globe','globes','goldenglobes','goldenglobe','award','the','a','with','tv','red','carpet','hilton']
 
 	bigrams = nltk.bigrams(words)
 
