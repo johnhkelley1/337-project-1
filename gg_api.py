@@ -3,6 +3,7 @@
 from modules import awards
 from modules import hosts
 from modules import nominees
+from copy import deepcopy
 import settings
 import movie_data
 
@@ -74,17 +75,41 @@ def main():
     and then run gg_api.main(). This is the second thing the TA will
     run when grading. Do NOT change the name of this function or
     what it returns.'''
-    # Your code here
-    #print get_hosts(2015)
-    #print get_awards(2015)
-    # noms = get_nominees(2015)
-    # for nom in noms:
-    #     print nom
-    #     print noms[nom]
-   # print get_nominees(2015)
-    print get_nominees(2015)
-    print get_hosts(2015)
-    print get_awards(2015)
+
+    choices = [{
+        'choice': 'View Winners',
+        'function': 'get_winner'
+    }, {
+        'choice': 'View Nominees',
+        'function': 'get_nominees'
+    }, {
+        'choice': 'View Awards',
+        'function': 'get_awards'
+    }, {
+        'choice': 'View Presenters',
+        'function': 'get_presenters'
+    }, {
+        'choice': 'View Hosts',
+        'function': 'get_hosts'
+    }]
+
+    while True:
+        for i, choice in enumerate(choices):
+            print "(%s) %s" % (i, choice['choice'])
+        print "(q) Quit"
+
+        print "Select a choice:",
+
+        choice = raw_input()
+        if choice == 'q':
+            break
+
+        choice = int(choice)
+        results = globals()[choices[choice]['function']](2015)
+        for key, val in results.iteritems():
+            print "=== %s ===" % key
+            print val
+
     return
 
 if __name__ == '__main__':

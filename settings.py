@@ -6,8 +6,10 @@ def init():
 	global awards
 	global synonyms
 	global award_stopwords
+	print "Loading 2015 tweets into memory..."
 	with open('gg2015.json') as data:
 		data15 = json.load(data)
+	print "Loading 2013 tweets into memory..."
 	with open('gg2013.json') as data:
 		data13 = json.load(data)
 
