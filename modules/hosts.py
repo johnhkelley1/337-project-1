@@ -35,7 +35,11 @@ def getFromTweets(year):
 	names = {}
 	hosts = []
 	x = 0
-	for tweet in settings.data15:
+	if year == '2015':
+		data = settings.data15
+	else:
+		data = settings.data13
+	for tweet in data:
 		if x % 10000 == 0:
 			print "%s/%s" % (x, len(settings.data15))
 		x += 1
