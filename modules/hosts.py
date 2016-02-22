@@ -36,7 +36,7 @@ def getFromTweets(year):
 	hosts = []
 	x = 0
 	for tweet in settings.data15:
-		if x % 10000 == 0:
+		if x % 100000 == 0:
 			print "%s/%s" % (x, len(settings.data15))
 		x += 1
 		if 'host' not in tweet['text']:
@@ -54,4 +54,3 @@ def getFromTweets(year):
 			hosts = hosts[:i]
 			break
 	return hosts
-

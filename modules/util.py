@@ -22,18 +22,29 @@ def names_from_text(text):
 	word_tokenize = nltk.tokenize.TreebankWordTokenizer().tokenize
 	words = word_tokenize(text)
 
-	stopwords = ['if','october','november','december','january','in','golden','globe','globes','goldenglobes','goldenglobe','award','the','a','with','tv','red','carpet','hilton','best','series','actor','actress','motion','motion','picture']
+	stopwords = ['rt', 'if','october','november','december','january','in',
+		'golden','globe','globes','goldenglobes','goldenglobe','award','the','a'
+		,'an','with','tv','television','red','carpet','hilton','best','series',
+		'actor','actress','motion','picture','winner','supporting','comedy','or'
+		,'role','imdb','performance','by','film','movie','musical','feature',
+		'winners','awards','made','for','thr','winnner','musical.','mini-series'
+		,'drama','congrats','huffingtonpost','presents','congratulations','wins'
+		,'goldenglobes.','picture-comedy','gets','abc']
 
-	words = [w for w in words if w not in stopwords]
+	words = [w for w in words if w.lower() not in stopwords]
 
+	names  = []
+	phrase = ""
+	for word in words:
+		if word[0].isupper():
+			if len(phrase) != 0:
+				phrase += " "
+			phrase += word
+		else:
+			if len(phrase) > 0:
+				names.append(phrase.lower())
+				phrase = ""
 
-	bigrams = nltk.bigrams(words)
-
-	names = []
-
-	for bigram in bigrams:
-		if(bigram[0][0].isupper() and bigram[1][0].isupper() and bigram[0].lower() not in stopwords and bigram[1].lower() not in stopwords):
-			names.append(bigram[0]+" "+bigram[1])
 	return names
 
 def get_human_names(text):
@@ -44,5 +55,3 @@ def get_human_names(text):
 		if name in movie_data.actors:
 			act_names.append(name)
 	return act_names
-
-

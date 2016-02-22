@@ -11,7 +11,7 @@ def init():
 	awards = [
     {
         'name': 'cecil b. demille award',
-        'regexs': [],
+        'regexs': ['cecil b\. demille'],
         'type': 0
     }, {
         'name': 'best motion picture - drama',
@@ -19,7 +19,7 @@ def init():
         'type': 0
     }, {
         'name': 'best performance by an actress in a motion picture - drama',
-        'regexs': ['best performance by an actress in a motion picture.+drama'],
+        'regexs': ['best performance.+actress.+motion picture.+drama'],
         'type': 1
     }, {
         'name': 'best performance by an actor in a motion picture - drama',

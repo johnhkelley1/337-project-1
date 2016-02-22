@@ -46,7 +46,7 @@ def get_winner(year):
     for award in OFFICIAL_AWARDS:
         winners[award] = "Daniel Craig"
 
-    return winners
+    return nominees.get(year)
 
 def get_presenters(year):
     '''Presenters is a dictionary with the hard coded award
@@ -82,6 +82,7 @@ def main():
     #     print nom
     #     print noms[nom]
    # print get_nominees(2015)
+    print get_nominees(2015)
     print get_hosts(2015)
     return
 

@@ -12,7 +12,7 @@ def get(year):
 	for tweet in settings.data15:
 		# if x > 100000:
 		# 	break
-		if x % 10000 == 0:
+		if x % 100000 == 0:
 			print "%s/%s" % (x, len(settings.data15))
 		x += 1
 		#if 'nomin' in tweet['text']:
@@ -51,6 +51,10 @@ def get(year):
 		for key,val in nominees[award].iteritems():
 			nominees2[award].append({"name":key,"count":val})
 		nominees2[award].sort(key=lambda x: -1*x['count'])
-		nominees2[award] = [p['name'] for p in nominees2[award][:10]]
+		#nominees2[award] = [p['name'] for p in nominees2[award][:10]]
+		if len(nominees2[award]) > 0:
+			nominees2[award] = nominees2[award][0]['name']
+		else:
+			nominees2[award] = ""
 
 	return nominees2
