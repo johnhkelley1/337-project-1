@@ -23,7 +23,7 @@ def get_awards(year):
     of this function or what it returns.'''
     print 'awards'
     # Your code here
-    return OFFICIAL_AWARDS
+    return awards.getFromTweets(year)
 
 def get_nominees(year):
     '''Nominees is a dictionary with the hard coded award
@@ -84,6 +84,7 @@ def main():
    # print get_nominees(2015)
     print get_nominees(2015)
     print get_hosts(2015)
+    print get_awards(2015)
     return
 
 if __name__ == '__main__':

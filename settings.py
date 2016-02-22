@@ -2,11 +2,14 @@ import json
 
 def init():
 	global data15
+	global data13
 	global awards
 	global synonyms
 	global award_stopwords
 	with open('gg2015.json') as data:
 		data15 = json.load(data)
+	with open('gg2013.json') as data:
+		data13 = json.load(data)
 
 	awards = [
     {

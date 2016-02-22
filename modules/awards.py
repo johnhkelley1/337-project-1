@@ -30,3 +30,51 @@ def awards_from_text(text):
 		if matches > 3:
 			awards.append(key)
 	return awards
+
+def award_name_from_text(text):
+	words = word_tokenize(text)
+	for i,val in enumerate(words):
+		if val != 'Best':
+			continue
+		if i>=(len(words) - 2):
+			break
+		if words[i+1].istitle() == False:
+			continue
+		award = val
+		i+=1
+		firsthyph = True
+		while words[i].istitle() or (words[i] == "-" and firsthyph == True):
+			if words[i] == "-":
+				firsthyph = False
+			award = award+" "+words[i]
+			i+=1
+			if (i)>=(len(words) - 1):
+				break
+		if len(word_tokenize(award)) > 3:
+			return award
+		return 0
+	return 0
+
+
+def getFromTweets(year):
+	awards = {}
+	award_names = []
+	if year == '2015':
+		data = settings.data15
+	else:
+		data = settings.data13
+	x = 0
+	for tweet in data:
+		if x % 10000 == 0:
+			print "%s/%s" % (x, len(settings.data15))
+		x += 1
+		aname = award_name_from_text(tweet['text'])
+		if(aname != 0):
+			if aname in awards:
+				awards[aname] += 1
+			else:
+				awards[aname] = 1
+			award_names = sorted(awards, key=awards.get, reverse=True)
+			award_names = award_names[:30]
+	print award_names
+	return award_names
