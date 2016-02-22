@@ -51,7 +51,6 @@ def get(year):
 		for key,val in nominees[award].iteritems():
 			nominees2[award].append({"name":key,"count":val})
 		nominees2[award].sort(key=lambda x: -1*x['count'])
-		nominees2[award] = nominees2[award][:10]
-	
+		nominees2[award] = [p['name'] for p in nominees2[award][:10]]
 
 	return nominees2
