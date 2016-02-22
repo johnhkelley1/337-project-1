@@ -24,10 +24,10 @@ def get(year):
 					break
 
 			if matched:
-				if award['type'] == 0:
-					tnames = util.names_from_text(tweet['text'])
-				else:
-					tnames = util.get_human_names(tweet['text'])
+				# if award['type'] == 0:
+				tnames = util.names_from_text(tweet['text'])
+				# else:
+				# 	tnames = util.get_human_names(tweet['text'])
 				for name in tnames:
 					if name.lower() not in award['name'].lower():
 						if name in nominees[award['name']]:

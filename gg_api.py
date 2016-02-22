@@ -21,7 +21,7 @@ def get_awards(year):
     '''Awards is a list of strings. Do NOT change the name
     of this function or what it returns.'''
     # Your code here
-    return [award['name'] for award in OFFICIAL_AWARDS]
+    return OFFICIAL_AWARDS
 
 def get_nominees(year):
     '''Nominees is a dictionary with the hard coded award
@@ -35,14 +35,14 @@ def get_winner(year):
     names as keys, and each entry containing a single string.
     Do NOT change the name of this function or what it returns.'''
     # Your code here
-    return winners
+    return {}
 
 def get_presenters(year):
     '''Presenters is a dictionary with the hard coded award
     names as keys, and each entry a list of strings. Do NOT change the
     name of this function or what it returns.'''
     # Your code here
-    return presenters
+    return {}
 
 def pre_ceremony():
     '''This function loads/fetches/processes any data your program
@@ -62,10 +62,11 @@ def main():
     # Your code here
     #print get_hosts(2015)
     #print get_awards(2015)
-    noms = get_nominees(2015)
-    for nom in noms:
-        print nom
-        print noms[nom]
+    # noms = get_nominees(2015)
+    # for nom in noms:
+    #     print nom
+    #     print noms[nom]
+    get_nominees()
     return
 
 if __name__ == '__main__':

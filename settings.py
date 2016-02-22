@@ -79,39 +79,39 @@ def init():
         'type': 1
     }, {
         'name': 'best performance by an actor in a television series - drama',
-        'regexs': [],
+        'regexs': ['best performance by an actor in a television series.+drama', 'best performance by an actor in a tv series.+drama'],
         'type': 1
     }, {
         'name': 'best television series - comedy or musical',
-        'regexs': [],
+        'regexs': ['best television series.+comedy or musical', 'best tv series.+comedy or musical'],
         'type': 0
     }, {
         'name': 'best performance by an actress in a television series - comedy or musical',
-        'regexs': [],
+        'regexs': ['best performance by an actress in a television series.+comedy or musical', 'best performance by an actress in a tv series.+comedy or musical'],
         'type': 1
     }, {
         'name': 'best performance by an actor in a television series - comedy or musical',
-        'regexs': [],
+        'regexs': ['best performance by an actor in a television series.+comedy or musical', 'best performance by an actor in a tv series.+comedy or musical'],
         'type': 1
     }, {
         'name': 'best mini-series or motion picture made for television',
-        'regexs': [],
+        'regexs': ['best mini-series or motion picture made for television', 'best mini-series or motion picture made for tv'],
         'type': 0
     }, {
         'name': 'best performance by an actress in a mini-series or motion picture made for television',
-        'regexs': [],
+        'regexs': ['best performance by an actress in a mini-series or motion picture made for television', 'best performance by an actress in a mini-series or motion picture made for tv'],
         'type': 1
     }, {
         'name': 'best performance by an actor in a mini-series or motion picture made for television',
-        'regexs': [],
+        'regexs': ['best performance by an actor in a mini-series or motion picture made for television', 'best performance by an actor in a mini-series or motion picture made for tv'],
         'type': 1
     }, {
         'name': 'best performance by an actress in a supporting role in a series, mini-series or motion picture made for television',
-        'regexs': [],
+        'regexs': ['best performance by an actress in a supporting role in a series, mini-series or motion picture made for television', 'best performance by an actress in a supporting role in a series, mini-series or motion picture made for tv'],
         'type': 1
     }, {
         'name': 'best performance by an actor in a supporting role in a series, mini-series or motion picture made for television',
-        'regexs': [],
+        'regexs': ['best performance by an actor in a supporting role in a series, mini-series or motion picture made for television', 'best performance by an actor in a supporting role in a series, mini-series or motion picture made for tv'],
         'type': 1
     }]
 	award_stopwords = ['in','a','the','-','or','for','by','and']
