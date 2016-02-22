@@ -23,10 +23,10 @@ def awards_from_text(text):
 		stripkey = word_tokenize(key)
 		stripkey = [w for w in stripkey if w not in settings.award_stopwords]
 		words = [w.lower() for w in words]
-		isaward = True
+		matches = 0
 		for w in stripkey:
-			if(w not in words):
-				isaward = False
-		if isaward:
+			if(w in words):
+				matches += 1
+		if matches > 3:
 			awards.append(key)
 	return awards

@@ -4,8 +4,10 @@ from modules import awards
 from modules import hosts
 from modules import nominees
 import settings
+import movie_data
 
 settings.init()
+movie_data.init()
 
 OFFICIAL_AWARDS = ['cecil b. demille award', 'best motion picture - drama', 'best performance by an actress in a motion picture - drama', 'best performance by an actor in a motion picture - drama', 'best motion picture - comedy or musical', 'best performance by an actress in a motion picture - comedy or musical', 'best performance by an actor in a motion picture - comedy or musical', 'best animated feature film', 'best foreign language film', 'best performance by an actress in a supporting role in a motion picture', 'best performance by an actor in a supporting role in a motion picture', 'best director - motion picture', 'best screenplay - motion picture', 'best original score - motion picture', 'best original song - motion picture', 'best television series - drama', 'best performance by an actress in a television series - drama', 'best performance by an actor in a television series - drama', 'best television series - comedy or musical', 'best performance by an actress in a television series - comedy or musical', 'best performance by an actor in a television series - comedy or musical', 'best mini-series or motion picture made for television', 'best performance by an actress in a mini-series or motion picture made for television', 'best performance by an actor in a mini-series or motion picture made for television', 'best performance by an actress in a supporting role in a series, mini-series or motion picture made for television', 'best performance by an actor in a supporting role in a series, mini-series or motion picture made for television']
 
@@ -19,7 +21,7 @@ def get_awards(year):
     '''Awards is a list of strings. Do NOT change the name
     of this function or what it returns.'''
     # Your code here
-    return OFFICIAL_AWARDS
+    return [award['name'] for award in OFFICIAL_AWARDS]
 
 def get_nominees(year):
     '''Nominees is a dictionary with the hard coded award
@@ -60,7 +62,10 @@ def main():
     # Your code here
     #print get_hosts(2015)
     #print get_awards(2015)
-    print get_nominees(2015)
+    noms = get_nominees(2015)
+    for nom in noms:
+        print nom
+        print noms[nom]
     return
 
 if __name__ == '__main__':

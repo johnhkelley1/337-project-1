@@ -1,5 +1,6 @@
 import nltk
 from nltk.tokenize.treebank import TreebankWordTokenizer
+import movie_data
 
 def year2num(year):
 	num = int(year) - 1943
@@ -21,7 +22,10 @@ def names_from_text(text):
 	word_tokenize = nltk.tokenize.TreebankWordTokenizer().tokenize
 	words = word_tokenize(text)
 
-	stopwords = ['if','october','november','december','january','in','golden','globe','globes','goldenglobes','goldenglobe','award','the','a','with','tv','red','carpet','hilton']
+	stopwords = ['if','october','november','december','january','in','golden','globe','globes','goldenglobes','goldenglobe','award','the','a','with','tv','red','carpet','hilton','best','series','actor','actress','motion','motion','picture']
+
+	words = [w for w in words if w not in stopwords]
+
 
 	bigrams = nltk.bigrams(words)
 
@@ -31,4 +35,14 @@ def names_from_text(text):
 		if(bigram[0][0].isupper() and bigram[1][0].isupper() and bigram[0].lower() not in stopwords and bigram[1].lower() not in stopwords):
 			names.append(bigram[0]+" "+bigram[1])
 	return names
+
+def get_human_names(text):
+	names = names_from_text(text)
+	names = [name.title() for name in names]
+	act_names = []
+	for name in names:
+		if name in movie_data.actors:
+			act_names.append(name)
+	return act_names
+
 
