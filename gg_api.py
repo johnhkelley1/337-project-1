@@ -3,6 +3,7 @@
 from modules import awards
 from modules import hosts
 from modules import nominees
+from modules import winners
 import settings
 import movie_data
 
@@ -24,6 +25,7 @@ def get_awards(year):
     print 'awards'
     # Your code here
     return awards.getFromTweets(year)
+    #return OFFICIAL_AWARDS
 
 def get_nominees(year):
     '''Nominees is a dictionary with the hard coded award
@@ -34,7 +36,7 @@ def get_nominees(year):
     winners = {}
     for award in OFFICIAL_AWARDS:
         winners[award] = ["Daniel Craig","Jack Black"]
-    return winners
+    return nominees.get(year)
 
 def get_winner(year):
     '''Winners is a dictionary with the hard coded award
@@ -42,11 +44,12 @@ def get_winner(year):
     Do NOT change the name of this function or what it returns.'''
     print 'winners'
     # Your code here
-    winners = {}
-    for award in OFFICIAL_AWARDS:
-        winners[award] = "Daniel Craig"
+    # winners = {}
+    # for award in OFFICIAL_AWARDS:
+    #     winners[award] = "Daniel Craig"
 
-    return nominees.get(year)
+    return winners.get(year)
+    #return winners
 
 def get_presenters(year):
     '''Presenters is a dictionary with the hard coded award
@@ -81,10 +84,10 @@ def main():
     # for nom in noms:
     #     print nom
     #     print noms[nom]
-   # print get_nominees(2015)
-    print get_nominees(2015)
-    print get_hosts(2015)
-    print get_awards(2015)
+    # print get_nominees(2015)
+    # print get_nominees(2015)
+    # print get_hosts(2015)
+    # print get_awards(2015)
     return
 
 if __name__ == '__main__':
