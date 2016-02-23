@@ -4,6 +4,7 @@ from modules import awards
 from modules import hosts
 from modules import nominees
 from modules import winners
+from modules import presenters
 from modules import humor
 from copy import deepcopy
 import settings
@@ -30,7 +31,7 @@ def get_awards(year):
     print 'Parsing tweets for awards (may take a few minutes)...'
     # Your code here
     #return awards.getFromTweets(year)
-    return OFFICIAL_AWARDS
+    return awards.getFromTweets(year)
 
 def get_nominees(year):
     '''Nominees is a dictionary with the hard coded award
@@ -53,12 +54,10 @@ def get_presenters(year):
     '''Presenters is a dictionary with the hard coded award
     names as keys, and each entry a list of strings. Do NOT change the
     name of this function or what it returns.'''
-    print 'presenters'
+    print 'Parsing tweets for presenters (may take a few minutes)...'
     # Your code here
-    winners = {}
-    for award in OFFICIAL_AWARDS:
-        winners[award] = ["Daniel Craig","Jack Black"]
-    return winners
+    
+    return presenters.get(year)
 
 def pre_ceremony():
     '''This function loads/fetches/processes any data your program
