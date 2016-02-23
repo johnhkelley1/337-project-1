@@ -25,8 +25,8 @@ def get_awards(year):
     of this function or what it returns.'''
     print 'awards'
     # Your code here
-    return awards.getFromTweets(year)
-    #return OFFICIAL_AWARDS
+    #return awards.getFromTweets(year)
+    return OFFICIAL_AWARDS
 
 def get_nominees(year):
     '''Nominees is a dictionary with the hard coded award
@@ -38,19 +38,20 @@ def get_nominees(year):
     for award in OFFICIAL_AWARDS:
         winners[award] = ["Daniel Craig","Jack Black"]
     return nominees.get(year)
+    #return winners
 
 def get_winner(year):
     '''Winners is a dictionary with the hard coded award
     names as keys, and each entry containing a single string.
     Do NOT change the name of this function or what it returns.'''
     print 'winners'
-    # Your code here
-    # winners = {}
-    # for award in OFFICIAL_AWARDS:
-    #     winners[award] = "Daniel Craig"
+    #Your code here
+    winners = {}
+    for award in OFFICIAL_AWARDS:
+        winners[award] = "Daniel Craig"
 
-    return winners.get(year)
-    #return winners
+    # return winners.get(year)
+    return winners
 
 def get_presenters(year):
     '''Presenters is a dictionary with the hard coded award

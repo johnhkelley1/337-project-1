@@ -10,7 +10,7 @@ def get(year):
 		nominees[award['name']] = {}
 	x = 0
 	if year == '2015':
-		data = settings.data15
+		data = settings.data13
 	else:
 		data = settings.data13
 	for tweet in data:

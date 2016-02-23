@@ -29,7 +29,7 @@ def names_from_text(text):
 		,'role','imdb','performance','by','film','movie','musical','feature',
 		'winners','awards','made','for','thr','winnner','musical.','mini-series'
 		,'drama','congrats','huffingtonpost','presents','congratulations','wins'
-		,'goldenglobes.','picture-comedy','gets','abc']
+		,'goldenglobes.','picture-comedy','gets','abc','.',',']
 
 	words = [w for w in words if w.lower() not in stopwords]
 
@@ -50,9 +50,9 @@ def names_from_text(text):
 def get_human_names(text):
 	word_tokenize = nltk.tokenize.TreebankWordTokenizer().tokenize
 	names = names_from_text(text)
-	names = [name.title() for name in names if len(word_tokenize(name)) > 1]
-	# act_names = []
-	# for name in names:
-	# 	if name in movie_data.actors:
-	# 		act_names.append(name)
-	return names
+	#names = [name.title() for name in names if len(word_tokenize(name)) == 2]
+	act_names = []
+	for name in names:
+		if name in movie_data.actors:
+			act_names.append(name)
+	return act_names
