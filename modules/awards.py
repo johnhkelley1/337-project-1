@@ -60,6 +60,7 @@ def award_name_from_text(text):
 def getFromTweets(year):
 	awards = {}
 	award_names = []
+	data = []
 	if year == '2015':
 		data = settings.data15
 	else:

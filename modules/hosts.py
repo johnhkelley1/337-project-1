@@ -35,11 +35,12 @@ def get(year):
 def getFromTweets(year):
 	names = {}
 	hosts = []
-	x = 0
+	data = []
 	if year == '2015':
 		data = settings.data15
 	else:
 		data = settings.data13
+	x = 0
 	for tweet in data:
 		if x % 5000 == 0:
 			sys.stdout.write(" Progress: %s/%s \r" % (x, len(data)))

@@ -9,10 +9,13 @@ def get(year):
 	nominees = {}
 	for award in settings.awards:
 		nominees[award['name']] = {}
+	data = []
+	if year == '2015':
+		data = settings.data15
+	else:
+		data = settings.data13
 	x = 0
-	for tweet in settings.data15:
-		# if x > 100000:
-		# 	break
+	for tweet in data:
 		if x % 5000 == 0:
 			sys.stdout.write(" Progress: %s/%s \r" % (x, len(data)))
 			sys.stdout.flush()

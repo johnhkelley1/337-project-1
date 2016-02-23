@@ -37,10 +37,7 @@ def get_nominees(year):
     the name of this function or what it returns.'''
     print 'Parsing tweets for nominees (may take a few minutes)...'
     # Your code here
-    winners = {}
-    for award in OFFICIAL_AWARDS:
-        winners[award] = ["Daniel Craig","Jack Black"]
-    return winners
+    return nominees.get(year)
 
 def get_winner(year):
     '''Winners is a dictionary with the hard coded award
@@ -108,9 +105,10 @@ def main():
         print "(q) Quit"
 
         print "Select a choice:",
-
         choice = raw_input()
+
         if choice == 'q':
+            print "Exiting..."
             break
 
         print "Enter year (2013 or 2015):",
