@@ -2,22 +2,25 @@ import settings
 import util
 import awards
 import re
+import sys
 def get(year):
 	names = []
 	tweets = []
 	nominees = {}
 	for award in settings.awards:
 		nominees[award['name']] = {}
-	x = 0
+	data = []
 	if year == '2015':
-		data = settings.data13
+		data = settings.data15
 	else:
 		data = settings.data13
+	x = 0
+
 	for tweet in data:
-		# if x > 100000:
-		# 	break
-		if x % 100000 == 0:
-			print "%s/%s" % (x, len(settings.data15))
+		if x % 5000 == 0:
+			sys.stdout.write(" Progress: %s/%s \r" % (x, len(data)))
+			sys.stdout.flush()
+
 		x += 1
 		#if 'nomin' in tweet['text']:
 		for award in settings.awards:
@@ -56,6 +59,5 @@ def get(year):
 			nominees2[award].append({"name":key,"count":val})
 		nominees2[award].sort(key=lambda x: -1*x['count'])
 		nominees2[award] = [p['name'] for p in nominees2[award][:20]]
-		
 
 	return nominees2

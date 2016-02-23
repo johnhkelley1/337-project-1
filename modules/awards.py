@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import settings
 import nltk
+import sys
 from nltk.tokenize.treebank import TreebankWordTokenizer
 
 word_tokenize = nltk.tokenize.TreebankWordTokenizer().tokenize
@@ -59,14 +60,16 @@ def award_name_from_text(text):
 def getFromTweets(year):
 	awards = {}
 	award_names = []
+	data = []
 	if year == '2015':
 		data = settings.data15
 	else:
 		data = settings.data13
 	x = 0
 	for tweet in data:
-		if x % 10000 == 0:
-			print "%s/%s" % (x, len(settings.data15))
+		if x % 5000 == 0:
+			sys.stdout.write(" Progress: %s/%s \r" % (x, len(data)))
+			sys.stdout.flush()
 		x += 1
 		aname = award_name_from_text(tweet['text'])
 		if(aname != 0):

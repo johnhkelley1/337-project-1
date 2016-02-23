@@ -5,6 +5,7 @@ import nltk
 from nltk.tokenize.treebank import TreebankWordTokenizer
 import util
 import settings
+import sys
 
 def get(year):
 	num = util.year2suf(year)
@@ -34,14 +35,16 @@ def get(year):
 def getFromTweets(year):
 	names = {}
 	hosts = []
-	x = 0
+	data = []
 	if year == '2015':
 		data = settings.data15
 	else:
 		data = settings.data13
+	x = 0
 	for tweet in data:
-		if x % 10000 == 0:
-			print "%s/%s" % (x, len(settings.data15))
+		if x % 5000 == 0:
+			sys.stdout.write(" Progress: %s/%s \r" % (x, len(data)))
+			sys.stdout.flush()
 		x += 1
 		if 'host' not in tweet['text']:
 			continue
