@@ -57,7 +57,7 @@ def get_presenters(year):
     print 'Parsing tweets for presenters (may take a few minutes)...'
     # Your code here
     
-    return presenters.get(year)
+    return nominees.get(year)
 
 def pre_ceremony():
     '''This function loads/fetches/processes any data your program
