@@ -32,7 +32,7 @@ def get(year):
 
 			if matched:
 				if award['type'] == 0:
-					tnames = util.names_from_text(tweet['text'])
+					tnames = util.get_movie_names(tweet['text'])
 				else:
 					tnames = util.get_human_names(tweet['text'])
 				for name in tnames:

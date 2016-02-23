@@ -48,11 +48,24 @@ def names_from_text(text):
 	return names
 
 def get_human_names(text):
-	word_tokenize = nltk.tokenize.TreebankWordTokenizer().tokenize
-	names = names_from_text(text)
+	#word_tokenize = nltk.tokenize.TreebankWordTokenizer().tokenize
+	#names = names_from_text(text)
 	#names = [name.title() for name in names if len(word_tokenize(name)) == 2]
-	act_names = []
-	for name in names:
-		if name in movie_data.actors:
-			act_names.append(name)
-	return act_names
+	#act_names = []
+	# for name in names:
+	# 	if name in movie_data.actors:
+	# 		act_names.append(name)
+	# return act_names
+
+	text = text.lower()
+	for actor in movie_data.actors:
+		if actor in text:
+			return [actor]
+	return []
+
+def get_movie_names(text):
+	text = text.lower()
+	for movie in movie_data.movies:
+		if movie in text:
+			return [movie]
+	return []
