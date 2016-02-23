@@ -3,11 +3,8 @@
 from modules import awards
 from modules import hosts
 from modules import nominees
-<<<<<<< Updated upstream
-=======
 from modules import winners
 from modules import humor
->>>>>>> Stashed changes
 from copy import deepcopy
 import settings
 import movie_data
