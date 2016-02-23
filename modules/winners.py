@@ -7,10 +7,15 @@ def get(year):
 	names = []
 	tweets = []
 	nominees = {}
+	data = []
+	if year == '2015':
+		data = settings.data15
+	else:
+		data = settings.data13
 	for award in settings.awards:
 		nominees[award['name']] = {}
 	x = 0
-	for tweet in settings.data15:
+	for tweet in data:
 		# if x > 100000:
 		# 	break
 		if x % 5000 == 0:
@@ -53,6 +58,10 @@ def get(year):
 		for key,val in nominees[award].iteritems():
 			nominees2[award].append({"name":key,"count":val})
 		nominees2[award].sort(key=lambda x: -1*x['count'])
-		nominees2[award] = [p['name'] for p in nominees2[award][:20]]
+		#nominees2[award] = [p['name'] for p in nominees2[award][:10]]
+		if len(nominees2[award]) > 0:
+			nominees2[award] = nominees2[award][0]['name']
+		else:
+			nominees2[award] = ""
 
 	return nominees2

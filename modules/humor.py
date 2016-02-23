@@ -1,8 +1,20 @@
 import settings
+import sys
+from copy import deepcopy
 
 def get(year):
+    data = []
+    if year == '2015':
+        data = settings.data15
+    else:
+        data = settings.data13
     joke_freq = {}
-    for tweet in settings.data15:
+    x = 0
+    for tweet in data:
+        x+=1
+        if x % 5000 == 0:
+			sys.stdout.write(" Progress: %s/%s \r" % (x, len(data)))
+			sys.stdout.flush()
         if 'joke' in tweet['text']:
             if tweet['text'] in joke_freq:
                 joke_freq[tweet['text']] += 1
